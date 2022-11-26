@@ -145,7 +145,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         cyrille.OnMouseMove(hWnd);
         break;
     case WM_PAINT:
-        cyrille.OnPaint(hWnd, elcirillo.getItem() - 1);
+        cyrille.RemoveItem(elcirillo.getRemove() - 1);
+        elcirillo.setRemove(0);
+        cyrille.OnPaint(hWnd, elcirillo.getSelected() - 1);
         break;
 
     case WM_CREATE:

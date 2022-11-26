@@ -5,6 +5,7 @@ HWND MyTable::hWndParent = NULL;
 
 LPCSTR MyTable::path = "objects_table.txt";
 int MyTable::selectedItem = 0;
+int MyTable::toRemove = 0;
 
 
 INT_PTR CALLBACK Table(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
@@ -20,7 +21,7 @@ INT_PTR CALLBACK Table(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 
 		if (button == IDEXIT || button == IDCANCEL)
 		{
-			MyTable::setItem(0);
+			MyTable::setSelected(0);
 			InvalidateRect(MyTable::getParent(), NULL, TRUE);
 
 			ShowWindow(MyTable::getTable(), SW_HIDE);
@@ -30,11 +31,19 @@ INT_PTR CALLBACK Table(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 		if (action == LBN_SELCHANGE)
 		{
 			int selectedItem = (int)SendMessage(GetDlgItem(hDlg, IDC_LIST1), LB_GETCURSEL, 0, 0);
-			MyTable::setItem(selectedItem);
-
-			InvalidateRect(MyTable::getParent(), NULL, TRUE);
+			MyTable::setSelected(selectedItem);
 		}
-		
+
+		if (action == LBN_DBLCLK)
+		{
+			int selectedItem = (int)SendMessage(GetDlgItem(hDlg, IDC_LIST1), LB_GETCURSEL, 0, 0);
+			MyTable::setRemove(selectedItem);
+			MyTable::setSelected(0);
+
+			SendMessage(GetDlgItem(hDlg, IDC_LIST1), LB_DELETESTRING, selectedItem, 0);
+		}
+
+		InvalidateRect(MyTable::getParent(), NULL, TRUE);
 		break;
 	}
 	return (INT_PTR)FALSE;
@@ -52,14 +61,25 @@ HWND MyTable::getParent()
 }
 
 
-void MyTable::setItem(int number)
+void MyTable::setSelected(int number)
 {
 	selectedItem = number;
 }
 
-int MyTable::getItem()
+int MyTable::getSelected()
 {
 	return selectedItem;
+}
+
+
+void MyTable::setRemove(int number)
+{
+	toRemove = number;
+}
+
+int MyTable::getRemove()
+{
+	return toRemove;
 }
 
 

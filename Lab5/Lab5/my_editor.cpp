@@ -95,3 +95,23 @@ void MyEditor::OnPaint(HWND hWnd, int selectedItem)
 		}
 	EndPaint(hWnd, &ps);
 }
+
+void MyEditor::RemoveItem(int selectedItem)
+{
+	if (selectedItem >= 0)
+	{
+		for (int i = 0; i < MY_SHAPE_ARRAY_SIZE; i++)
+			if (i >= selectedItem)
+			{
+				Shape* next = pshape[i + 1];
+				if (next)
+					pshape[i] = next;
+				else
+				{
+					pshape[i] = NULL;
+					break;
+				}
+			}
+		i--;
+	}
+}

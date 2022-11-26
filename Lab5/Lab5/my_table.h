@@ -18,6 +18,7 @@ private:
 
 	static LPCSTR path;
 	static int selectedItem;
+	static int toRemove;
 public:
 	static MyTable& getInstance()
 	{
@@ -27,8 +28,11 @@ public:
 	static HWND getTable();
 	static HWND getParent();
 
-	static void setItem(int);
-	static int getItem();
+	static void setSelected(int);
+	static int getSelected();
+
+	static void setRemove(int);
+	static int getRemove();
 
 	void OnCreate(HWND, HINSTANCE);
 	void Show();

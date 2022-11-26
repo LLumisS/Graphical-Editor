@@ -35,4 +35,5 @@ public:
 	std::wstring OnLBup(HWND);
 	void OnMouseMove(HWND);
 	void OnPaint(HWND, int);
+	void RemoveItem(int);
 };
