@@ -1,0 +1,7 @@
+*.pdf
+*.PDF
+*.docx
+Особл*
+.vs
+*.tlog
+x64
