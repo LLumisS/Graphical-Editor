@@ -4,7 +4,6 @@
 #include <fstream>
 #include <string>
 #include <codecvt>
-//#include <locale>
 
 class MyTable
 {
@@ -37,4 +36,5 @@ public:
 	void OnCreate(HWND, HINSTANCE);
 	void Show();
 	void Add(std::wstring);
+	static void Remove(int);
 };

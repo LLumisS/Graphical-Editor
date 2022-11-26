@@ -37,10 +37,12 @@ INT_PTR CALLBACK Table(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 		if (action == LBN_DBLCLK)
 		{
 			int selectedItem = (int)SendMessage(GetDlgItem(hDlg, IDC_LIST1), LB_GETCURSEL, 0, 0);
-			MyTable::setRemove(selectedItem);
-			MyTable::setSelected(0);
 
-			SendMessage(GetDlgItem(hDlg, IDC_LIST1), LB_DELETESTRING, selectedItem, 0);
+			if (selectedItem)
+			{
+				MyTable::Remove(selectedItem);
+				SendMessage(GetDlgItem(hDlg, IDC_LIST1), LB_DELETESTRING, selectedItem, 0);
+			}
 		}
 
 		InvalidateRect(MyTable::getParent(), NULL, TRUE);
@@ -121,4 +123,34 @@ void MyTable::Add(std::wstring properties)
 
 		SendMessage(GetDlgItem(hWndTable, IDC_LIST1), LB_ADDSTRING, 0, (LPARAM)properties.c_str());
 	}
+}
+
+void MyTable::Remove(int selectedItem)
+{
+	std::ifstream filein;
+	filein.open(path);
+
+	std::string line;
+	std::string table;
+
+	int i = 0;
+	while (getline(filein, line))
+	{
+		if (i != selectedItem)
+		{
+			table.insert(table.size(), line);
+			table.insert(table.size(), "\n");
+		}
+		i++;
+	}
+
+	filein.close();
+
+	std::ofstream fileout;
+	fileout.open(path);
+	fileout << table << std::endl;
+	fileout.close();
+
+	setRemove(selectedItem);
+	setSelected(0);
 }
