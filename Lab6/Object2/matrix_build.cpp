@@ -72,7 +72,6 @@ std::string MatrixBuild::GetMatrixString(int** matrixSrc, int size)
 	std::ostringstream stream;
 	int element;
 
-	//int N = sizeof(matrixSrc[0]) / sizeof(matrixSrc[0][0]);
 	for (int i = 0; i < size; i++)
 	{
 		for (int j = 0; j < size; j++)
