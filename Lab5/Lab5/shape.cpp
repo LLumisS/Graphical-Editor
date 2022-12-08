@@ -10,15 +10,18 @@ void Shape::Set(long x1, long y1, long x2, long y2)
 
 void Shape::Show(HDC hdc, bool isSelected)
 {
-	COLORREF color = isSelected ? 0x0000ff : 0;
+	if(xend)
+	{
+		COLORREF color = isSelected ? 0x0000ff : 0;
 
-	HPEN hPen = CreatePen(PS_SOLID, 1, color);
-	HPEN hPenOld = (HPEN)SelectObject(hdc, hPen);
+		HPEN hPen = CreatePen(PS_SOLID, 1, color);
+		HPEN hPenOld = (HPEN)SelectObject(hdc, hPen);
 
-	Draw(hdc);
+		Draw(hdc);
 
-	SelectObject(hdc, hPenOld);
-	DeleteObject(hPen);
+		SelectObject(hdc, hPenOld);
+		DeleteObject(hPen);
+	}
 }
 
 std::wstring Shape::getProperties()

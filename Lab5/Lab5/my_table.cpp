@@ -51,40 +51,6 @@ INT_PTR CALLBACK Table(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 	return (INT_PTR)FALSE;
 }
 
-
-HWND MyTable::getTable()
-{
-	return hWndTable;
-}
-
-HWND MyTable::getParent()
-{
-	return hWndParent;
-}
-
-
-void MyTable::setSelected(int number)
-{
-	selectedItem = number;
-}
-
-int MyTable::getSelected()
-{
-	return selectedItem;
-}
-
-
-void MyTable::setRemove(int number)
-{
-	toRemove = number;
-}
-
-int MyTable::getRemove()
-{
-	return toRemove;
-}
-
-
 void MyTable::OnCreate(HWND hWnd, HINSTANCE hInst)
 {
 	FILE* fout;
@@ -154,3 +120,17 @@ void MyTable::Remove(int selectedItem)
 	setRemove(selectedItem);
 	setSelected(0);
 }
+
+HWND MyTable::getTable() { return hWndTable; }
+
+HWND MyTable::getParent() { return hWndParent; }
+
+
+void MyTable::setSelected(int number) { selectedItem = number; }
+
+int MyTable::getSelected() { return selectedItem; }
+
+
+void MyTable::setRemove(int number) { toRemove = number; }
+
+int MyTable::getRemove() { return toRemove; }
