@@ -26,7 +26,7 @@ INT_PTR CALLBACK Matrix(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
                 break;
             }
 
-            if (min > max || N < 1 || N > 20 || min > 99999 || max > 99999)
+            if (min > max || N < 1 || N > 10 || abs(min) > 99999 || abs(max) > 99999)
             {
                 MessageBox(hDlg, L"Некоректні дані", L"Помилка", MB_OK | MB_ICONERROR);
                 break;

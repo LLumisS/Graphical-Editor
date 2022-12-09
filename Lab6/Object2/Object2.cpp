@@ -128,7 +128,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
-    case WM_CREATE:
     case WM_COPYDATA:
         SetWindowPos(hWnd, NULL, 540, 40, 800, 800, SWP_SHOWWINDOW);
         matrixBuild.OnCopyData(hWnd, wParam, lParam);

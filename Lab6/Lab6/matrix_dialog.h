@@ -2,6 +2,7 @@
 #include "framework.h"
 #include "resource1.h"
 #include <string>
+#include <cmath>
 
 class MatrixDialog
 {
