@@ -124,7 +124,7 @@ void MatrixDet::OnPaint(HWND hWnd, HDC hdc)
 	std::wstring wsDet;
 
 	std::stringstream ss;
-	ss << det;
+	ss << std::fixed << std::setprecision(0) << det;
 	ss >> sDet;
 	wsDet = converter.from_bytes(sDet);
 

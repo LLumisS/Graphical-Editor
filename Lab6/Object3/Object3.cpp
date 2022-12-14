@@ -130,7 +130,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
     case WM_CREATE:
     case WM_CLIPBOARDUPDATE:
-        SetWindowPos(hWnd, NULL, 1340, 40, 200, 200, SWP_SHOWWINDOW);
+        SetWindowPos(hWnd, NULL, 1140, 40, 400, 200, SWP_SHOWWINDOW);
         matrixDet.OnCreate(hWnd);
         break;
     case WM_COMMAND:
