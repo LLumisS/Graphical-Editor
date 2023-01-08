@@ -10,16 +10,14 @@ Shape* PointShape::Construct()
 
 std::wstring PointShape::getName()
 {
-	xstart = xend;
-	ystart = yend;
-	xend = 0;
-	yend = 0;
+	xstart = 0;
+	ystart = 0;
 	return L"Крапка";
 }
 
 void PointShape::Draw(HDC hdc)
 {
-	Rectangle(hdc, xstart - 1, ystart - 1, xstart + 1, ystart + 1);
+	Rectangle(hdc, xend - 1, yend - 1, xend + 1, yend + 1);
 }
 
 void PointShape::Gum(HDC hdc) {}
