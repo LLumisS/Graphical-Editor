@@ -2,7 +2,7 @@
 //
 
 #include "framework.h"
-#include "Lab5.h"
+#include "main.h"
 #include "my_editor.h"
 #include "my_table.h"
 
